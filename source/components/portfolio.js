@@ -1,17 +1,30 @@
 import React from 'react';
 
-class PortfolioItem extends React.Component {
+export class PortfolioItem extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {hasImage:true};
+    this.onUpdateImageState = this.onUpdateImageState.bind(this);
+  }
+
+  onUpdateImageState(){
+    this.setState({hasImage:false});
+    setTimeout(() => {
+      this.setState({hasImage:true});
+    }, 1000)
+  }
+
   render(){
-    const path = `img/portfolio/${this.props.img}.png`;`
+    const path = `img/portfolio/${this.props.img}.png`;
     return(
-      <div className="col-sm-4 portfolio-item">
+      <div  onClick={this.onUpdateImageState} className="col-sm-4 portfolio-item">
           <a href="#portfolioModal1" className="portfolio-link" data-toggle="modal">
               <div className="caption">
                   <div className="caption-content">
                       <i className="fa fa-search-plus fa-3x"></i>
                   </div>
               </div>
-              <img src="img/portfolio/cabin.png" className="img-responsive" alt=""/>
+              {this.state.hasImage ? <img src={path} className="img-responsive" alt="" /> : null}
           </a>
       </div>
     )
@@ -30,57 +43,7 @@ export default class Portfolio extends React.Component {
                 </div>
             </div>
             <div className="row">
-              <PortfolioItem />
-                <div className="col-sm-4 portfolio-item">
-                    <a href="#portfolioModal2" className="portfolio-link" data-toggle="modal">
-                        <div className="caption">
-                            <div className="caption-content">
-                                <i className="fa fa-search-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="img/portfolio/cake.png" className="img-responsive" alt=""/>
-                    </a>
-                </div>
-                <div className="col-sm-4 portfolio-item">
-                    <a href="#portfolioModal3" className="portfolio-link" data-toggle="modal">
-                        <div className="caption">
-                            <div className="caption-content">
-                                <i className="fa fa-search-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="img/portfolio/circus.png" className="img-responsive" alt=""/>
-                    </a>
-                </div>
-                <div className="col-sm-4 portfolio-item">
-                    <a href="#portfolioModal4" className="portfolio-link" data-toggle="modal">
-                        <div className="caption">
-                            <div className="caption-content">
-                                <i className="fa fa-search-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="img/portfolio/game.png" className="img-responsive" alt=""/>
-                    </a>
-                </div>
-                <div className="col-sm-4 portfolio-item">
-                    <a href="#portfolioModal5" className="portfolio-link" data-toggle="modal">
-                        <div className="caption">
-                            <div className="caption-content">
-                                <i className="fa fa-search-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="img/portfolio/safe.png" className="img-responsive" alt=""/>
-                    </a>
-                </div>
-                <div className="col-sm-4 portfolio-item">
-                    <a href="#portfolioModal6" className="portfolio-link" data-toggle="modal">
-                        <div className="caption">
-                            <div className="caption-content">
-                                <i className="fa fa-search-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="img/portfolio/submarine.png" className="img-responsive" alt=""/>
-                    </a>
-                </div>
+              {this.props.children}
             </div>
         </div>
     </section>

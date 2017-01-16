@@ -1,5 +1,23 @@
 import React from 'react';
 
+class PortfolioItem extends React.Component {
+  render(){
+    const path = `img/portfolio/${this.props.img}.png`;`
+    return(
+      <div className="col-sm-4 portfolio-item">
+          <a href="#portfolioModal1" className="portfolio-link" data-toggle="modal">
+              <div className="caption">
+                  <div className="caption-content">
+                      <i className="fa fa-search-plus fa-3x"></i>
+                  </div>
+              </div>
+              <img src="img/portfolio/cabin.png" className="img-responsive" alt=""/>
+          </a>
+      </div>
+    )
+  }
+}
+
 export default class Portfolio extends React.Component {
   render(){
     return(
@@ -12,16 +30,7 @@ export default class Portfolio extends React.Component {
                 </div>
             </div>
             <div className="row">
-                <div className="col-sm-4 portfolio-item">
-                    <a href="#portfolioModal1" className="portfolio-link" data-toggle="modal">
-                        <div className="caption">
-                            <div className="caption-content">
-                                <i className="fa fa-search-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="img/portfolio/cabin.png" className="img-responsive" alt=""/>
-                    </a>
-                </div>
+              <PortfolioItem />
                 <div className="col-sm-4 portfolio-item">
                     <a href="#portfolioModal2" className="portfolio-link" data-toggle="modal">
                         <div className="caption">

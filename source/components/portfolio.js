@@ -1,4 +1,5 @@
 import React from 'react';
+import Section from './section';
 
 export class PortfolioItem extends React.Component {
   constructor(props){
@@ -15,17 +16,17 @@ export class PortfolioItem extends React.Component {
   }
 
   render(){
-    const path = `img/portfolio/${this.props.img}.png`;
+    const path = `img/portfolio/${this.props.data.img}.png`;
     return(
-      <div  onClick={this.onUpdateImageState} className="col-sm-4 portfolio-item">
-          <a href="#portfolioModal1" className="portfolio-link" data-toggle="modal">
-              <div className="caption">
-                  <div className="caption-content">
-                      <i className="fa fa-search-plus fa-3x"></i>
-                  </div>
-              </div>
-              {this.state.hasImage ? <img src={path} className="img-responsive" alt="" /> : null}
-          </a>
+      <div onClick={this.onUpdateImageState} className="col-sm-4 portfolio-item">
+        <a href={this.props.data.link} className="portfolio-link" data-toggle="modal">
+          <div className="caption">
+            <div className="caption-content">
+              <i className="fa fa-search-plus fa-3x"></i>
+            </div>
+          </div>
+          {this.state.hasImage ? <img src={path} className="img-responsive" alt="" /> : null}
+        </a>
       </div>
     )
   }
@@ -33,20 +34,14 @@ export class PortfolioItem extends React.Component {
 
 export default class Portfolio extends React.Component {
   render(){
+    const portfolioData = [];
+    for( var item of this.props.data){
+      portfolioData.push(<PortfolioItem data={item} key={portfolioData.length} />);
+    }
     return(
-      <section id="portfolio">
-        <div className="container">
-            <div className="row">
-                <div className="col-lg-12 text-center">
-                    <h2>Portfolio</h2>
-                    <hr className="star-primary"/>
-                </div>
-            </div>
-            <div className="row">
-              {this.props.children}
-            </div>
-        </div>
-    </section>
+      <Section id="portfolio" title="Portfolio">
+        {portfolioData}
+      </Section>
     )
   }
 };

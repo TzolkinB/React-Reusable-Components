@@ -1,13 +1,31 @@
-import React from 'react';
+import React    from 'react';
 import ReactDOM from 'react-dom';
-import {default as Portfolio, PortfolioItem} from './components/portfolio';
+import About    from './components/about';
+import Contact  from './components/contact';
+import Header   from './components/header';
+import Footer   from './components/footer';
+import {
+  default as Portfolio, PortfolioItem
+} from './components/portfolio';
+
+const portfolioModel = [
+  {img: 'cake', link:'#'},
+  {img: 'circus', link:'#'},
+  {img: 'game', link:'#'},
+  {img: 'safe', link:'#'},
+  {img: 'submarine', link:'#'},
+  {img: 'cabin', link:'#'}
+];
 
 ReactDOM.render(
-    <Portfolio>
-      <PortfolioItem img="cabin" />
-      <PortfolioItem img="cake" />
-      <PortfolioItem img="circus" />
-      <PortfolioItem img="game" />
-      <PortfolioItem img="safe" />
-      <PortfolioItem img="submarine" />
-    </Portfolio>, document.getElementById('react-app'));
+    <div>
+      <Header 
+        title="Master React Components" 
+        subtitle="React - Components - JSX - ES6"
+      />
+      <Portfolio data={portfolioModel} />
+      <About />
+      <Contact />
+      <Footer />
+    </div>
+    , document.getElementById('react-app'));

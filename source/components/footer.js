@@ -1,40 +1,58 @@
 import React from 'react';
 
-export default class Header extends React.Component {
+const footerModel = [
+  {title: "Location", content:"333481 Melrose Place <br/> Beverly Hills, CA 90210"},
+  {title: "Around the Web", content: [
+    {link:"#", platform:"facebook"},
+    {link:"#", platform:"google-plus"},
+    {link:"#", platform:"twitter"},
+    {link:"#", platform:"linkedin"},
+    {link:"#", platform:"dribbble"},
+  ]},
+  {title: "About Freelancer", content:"Freelance is a free to use, open source Bootstrap theme created by <a href='http://startbootstrap.com'>Start Bootstrap</a>."}
+];
+
+class TextFooter extends React.Component {
+  render() {
+    return(
+      <div className="footer-col col-md-4">
+        <h3>{this.props.title}</h3>
+        <p>{this.props.content.innerHTML}</p>
+      </div>
+    )
+  }
+}
+
+class SocialMedia extends React.Component {
+  render() {
+
+    return(
+      <div className="footer-col col-md-4">
+        <h3>{this.props.title}</h3>
+          <ul className="list-inline">
+          {this.props.content.map((item, index) => (
+            <li key={`content-${index}`}>
+              <a href={item.link} className="btn-social btn-outline">
+                <i className={"fa fa-fw fa-" + item.platform}></i>
+              </a>
+            </li>
+            ))}
+          </ul>
+      </div>
+    )
+  }
+}
+
+export default class Footer extends React.Component {
   render(){
     return(
       <footer className="text-center">
         <div className="footer-above">
           <div className="container">
             <div className="row">
-              <div className="footer-col col-md-4">
-                <h3>Location</h3>
-                <p>3481 Melrose Place<br/>Beverly Hills, CA 90210</p>
-              </div>
-              <div className="footer-col col-md-4">
-                <h3>Around the Web</h3>
-                <ul className="list-inline">
-                  <li>
-                    <a href="#" className="btn-social btn-outline"><i className="fa fa-fw fa-facebook"></i></a>
-                  </li>
-                  <li>
-                    <a href="#" className="btn-social btn-outline"><i className="fa fa-fw fa-google-plus"></i></a>
-                  </li>
-                  <li>
-                    <a href="#" className="btn-social btn-outline"><i className="fa fa-fw fa-twitter"></i></a>
-                  </li>
-                  <li>
-                    <a href="#" className="btn-social btn-outline"><i className="fa fa-fw fa-linkedin"></i></a>
-                  </li>
-                  <li>
-                    <a href="#" className="btn-social btn-outline"><i className="fa fa-fw fa-dribbble"></i></a>
-                  </li>
-                </ul>
-              </div>
-              <div className="footer-col col-md-4">
-                <h3>About Freelancer</h3>
-                <p>Freelance is a free to use, open source Bootstrap theme created by <a href="http://startbootstrap.com">Start Bootstrap</a>.</p>
-              </div>
+              <TextFooter {...footerModel[0]} />
+              <SocialMedia {...footerModel[1]} />
+              <TextFooter {...footerModel[2]} />
             </div>
           </div>
         </div>

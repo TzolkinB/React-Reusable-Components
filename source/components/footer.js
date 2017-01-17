@@ -1,13 +1,13 @@
 import React from 'react';
 
 const footerModel = [
-  {title: "Location", content:"3481 Melrose Place<br/>Beverly Hills, CA 90210"},
+  {title: "Location", content:"333481 Melrose Place <br/> Beverly Hills, CA 90210"},
   {title: "Around the Web", content: [
-    {link:"#", platform:"fa fa-fw fa-facebook"},
-    {link:"#", platform:"fa fa-fw fa-google-plus"},
-    {link:"#", platform:"fa fa-fw fa-twitter"},
-    {link:"#", platform:"fa fa-fw fa-linkedin"},
-    {link:"#", platform:"fa fa-fw fa-dribbble"},
+    {link:"#", platform:"facebook"},
+    {link:"#", platform:"google-plus"},
+    {link:"#", platform:"twitter"},
+    {link:"#", platform:"linkedin"},
+    {link:"#", platform:"dribbble"},
   ]},
   {title: "About Freelancer", content:"Freelance is a free to use, open source Bootstrap theme created by <a href='http://startbootstrap.com'>Start Bootstrap</a>."}
 ];
@@ -17,26 +17,27 @@ class TextFooter extends React.Component {
     return(
       <div className="footer-col col-md-4">
         <h3>{this.props.title}</h3>
-        <p>{this.props.content}</p>
+        <p>{this.props.content.innerHTML}</p>
       </div>
     )
   }
 }
 
 class SocialMedia extends React.Component {
-  //const icon = "fa fa-fw fa-" + {this.props.platform};
-
   render() {
+
     return(
       <div className="footer-col col-md-4">
-        <h3>{...footerModel.title[1]}</h3>
-        <ul className="list-inline">
-          <li>
-            <a href={this.props.link} className="btn-social btn-outline">
-              <i className={this.props.platform}></i>
-            </a>
-          </li>
-        </ul>
+        <h3>{this.props.title}</h3>
+          <ul className="list-inline">
+          {this.props.content.map((item, index) => (
+            <li key={`content-${index}`}>
+              <a href={item.link} className="btn-social btn-outline">
+                <i className={"fa fa-fw fa-" + item.platform}></i>
+              </a>
+            </li>
+            ))}
+          </ul>
       </div>
     )
   }

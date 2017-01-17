@@ -2,15 +2,16 @@ import React from 'react';
 
 export default class Section extends React.Component {
   render() {
+    const {className, id, title, children} = this.props;
     return(
-      <section className={this.props.className} id={this.props.id}>
+      <section className={className} id={id}>
         <div className="container">
           <div className="row">
             <div className="col-lg-12 text-center">
-              <h2>{this.props.title}</h2>
+              <h2>{title}</h2>
               <hr className="star-light"/>
             </div>
-            {this.props.children}            
+            {children}            
           </div>
         </div>
       </section>

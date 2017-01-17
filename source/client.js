@@ -4,6 +4,7 @@ import About    from './components/about';
 import Contact  from './components/contact';
 import Header   from './components/header';
 import Footer   from './components/footer';
+import Nav      from './components/nav';
 import {
   default as Portfolio, PortfolioItem
 } from './components/portfolio';
@@ -19,6 +20,7 @@ const portfolioModel = [
 
 ReactDOM.render(
     <div>
+      <Nav />
       <Header 
         title="Master React Components" 
         subtitle="React - Components - JSX - ES6"

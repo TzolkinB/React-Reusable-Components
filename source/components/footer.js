@@ -1,7 +1,7 @@
 import React from 'react';
 
 const footerModel = [
-  {title: "Location", content:"333481 Melrose Place <br/> Beverly Hills, CA 90210"},
+  {title: "Location", content:"333481 Melrose Place", other:"Beverly Hills, CA 90210"},
   {title: "Around the Web", content: [
     {link:"#", platform:"facebook"},
     {link:"#", platform:"google-plus"},
@@ -9,7 +9,7 @@ const footerModel = [
     {link:"#", platform:"linkedin"},
     {link:"#", platform:"dribbble"},
   ]},
-  {title: "About Freelancer", content:"Freelance is a free to use, open source Bootstrap theme created by <a href='http://startbootstrap.com'>Start Bootstrap</a>."}
+  {title: "About Freelancer", content:"Freelance is a free to use, open source Bootstrap theme created by:", other: <a href='#'>Start Bootstrap</a>}
 ];
 
 class TextFooter extends React.Component {
@@ -17,7 +17,11 @@ class TextFooter extends React.Component {
     return(
       <div className="footer-col col-md-4">
         <h3>{this.props.title}</h3>
-        <p>{this.props.content.innerHTML}</p>
+        <p>
+          {this.props.content}
+          <br/>
+          {this.props.other}
+        </p>
       </div>
     )
   }
@@ -52,7 +56,7 @@ export default class Footer extends React.Component {
             <div className="row">
               <TextFooter {...footerModel[0]} />
               <SocialMedia {...footerModel[1]} />
-              <TextFooter {...footerModel[2]} />
+              <TextFooter {...footerModel[2]} a href='http://startbootstrap.com'/>
             </div>
           </div>
         </div>

@@ -2,6 +2,8 @@ import React from 'react';
 
 export default class Header extends React.Component {
   render(){
+    const {title, subtitle} = this.props;
+
     return(
       <header>
         <div className="container">
@@ -10,11 +12,11 @@ export default class Header extends React.Component {
               <img className="img-responsive" src="img/profile.png" alt=""/>
               <div className="intro-text">
                 <span className="name">
-                  {this.props.title}
+                  {title}
                 </span>
                 <hr className="star-light"/>
                 <span className="skills">
-                  {this.props.subtitle}
+                  {subtitle}
                 </span>
               </div>
             </div>

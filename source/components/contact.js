@@ -1,33 +1,35 @@
 import React from 'react';
 import Section from './section';
 
+const contactModel = [
+  {label:"Name", type:"text", placeholder:"Name", id:"name", message:"Please enter your name."},
+  {label:"Email Address", type:"email", placeholder:"Email Address", id:"email", message:"Please enter your email address."},
+  {label:"Phone Number", type:"tel", placeholder:"Phone Number", id:"phone", message:"Please enter your phone number."},
+];
+
+class ContactInfo extends React.Component {
+  render(){
+    return(
+      <div className="row control-group">
+      {contactModel.map((item, index) => (
+        <div className="form-group col-xs-12 floating-label-form-group controls" key={`item-${index}`}>
+          <label>{item.label}</label>
+          <input type={item.type} className="form-control" placeholder={item.placeholder} id={item.id} required data-validation-required-message={item.message}/>
+          <p className="help-block text-danger"></p>
+        </div>
+      ))}
+      </div>
+    )
+  }
+};
+
 export default class Contact extends React.Component {
   render() {
     return(
       <Section id="contact" title="Contact Me">
         <div className="col-lg-8 col-lg-offset-2">
           <form name="sentMessage" id="contactForm" noValidate>
-            <div className="row control-group">
-              <div className="form-group col-xs-12 floating-label-form-group controls">
-                <label>Name</label>
-                <input type="text" className="form-control" placeholder="Name" id="name" required data-validation-required-message="Please enter your name."/>
-                <p className="help-block text-danger"></p>
-              </div>
-            </div>
-            <div className="row control-group">
-              <div className="form-group col-xs-12 floating-label-form-group controls">
-                <label>Email Address</label>
-                <input type="email" className="form-control" placeholder="Email Address" id="email" required data-validation-required-message="Please enter your email address."/>
-                <p className="help-block text-danger"></p>
-              </div>
-            </div>
-            <div className="row control-group">
-              <div className="form-group col-xs-12 floating-label-form-group controls">
-                <label>Phone Number</label>
-                <input type="tel" className="form-control" placeholder="Phone Number" id="phone" required data-validation-required-message="Please enter your phone number."/>
-                <p className="help-block text-danger"></p>
-              </div>
-            </div>
+            <ContactInfo />
             <div className="row control-group">
               <div className="form-group col-xs-12 floating-label-form-group controls">
                 <label>Message</label>
@@ -47,4 +49,4 @@ export default class Contact extends React.Component {
       </Section>
     )
   }
-}
+};

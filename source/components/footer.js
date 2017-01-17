@@ -9,18 +9,21 @@ const footerModel = [
     {link:"#", platform:"linkedin"},
     {link:"#", platform:"dribbble"},
   ]},
-  {title: "About Freelancer", content:"Freelance is a free to use, open source Bootstrap theme created by:", other: <a href='#'>Start Bootstrap</a>}
+  {title: "About Freelancer", content:"Freelance is a free to use, open source Bootstrap theme created by", other: <a href='#'>Start Bootstrap</a>}
 ];
+
+const currentYear = new Date().getFullYear();
 
 class TextFooter extends React.Component {
   render() {
+    const {title, content, other} = this.props;
     return(
       <div className="footer-col col-md-4">
-        <h3>{this.props.title}</h3>
+        <h3>{title}</h3>
         <p>
-          {this.props.content}
+          {content}
           <br/>
-          {this.props.other}
+          {other}
         </p>
       </div>
     )
@@ -29,12 +32,12 @@ class TextFooter extends React.Component {
 
 class SocialMedia extends React.Component {
   render() {
-
+    const {title, content} = this.props;
     return(
       <div className="footer-col col-md-4">
-        <h3>{this.props.title}</h3>
+        <h3>{title}</h3>
           <ul className="list-inline">
-          {this.props.content.map((item, index) => (
+          {content.map((item, index) => (
             <li key={`content-${index}`}>
               <a href={item.link} className="btn-social btn-outline">
                 <i className={"fa fa-fw fa-" + item.platform}></i>
@@ -64,7 +67,7 @@ export default class Footer extends React.Component {
           <div className="container">
             <div className="row">
               <div className="col-lg-12">
-                Copyright &copy; Your Website 2014
+                Copyright &copy; Your Website {currentYear}
               </div>
             </div>
           </div>

@@ -1,4 +1,3 @@
 # React-Reusable-Components
 
-![Preview Image of Site]
-(https://github.com/TzolkinB/React-Reusable-Components/blob/master/public/img/preview.png)
+![Screenshot of App](https://github.com/TzolkinB/React-Reusable-Components/blob/master/public/img/preview.png)
